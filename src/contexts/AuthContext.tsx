@@ -8,27 +8,27 @@ const DEV_MODE = true
 // Mock regular user data for development
 const MOCK_USER: User = {
   id: '12345678-1234-5678-9012-123456789012',
-  email: 'user@dev.com',
+  email: 'user@gmai  l.com',
   created_at: new Date().toISOString(),
   updated_at: new Date().toISOString(),
   aud: 'authenticated',
   role: 'authenticated',
   app_metadata: {},
-  user_metadata: { name: 'Dev User' },
+  user_metadata: { name: '김하은' },
   identities: [],
   factors: []
 } as User
 
 const MOCK_PROFILE: Profile = {
   id: '12345678-1234-5678-9012-123456789012',
-  email: 'user@dev.com',
-  name: 'Dev User',
-  gender: 'male',
-  birth_year: 1990,
+  email: 'user@gmail.com',
+  name: '김하은',
+  gender: 'female',
+  birth_year: 2000,
   phone: '010-1234-5678',
-  height: 175,
+  height: 163,
   weight: 70,
-  ideal_type: 'Development testing',
+  ideal_type: '키 크고 다정하신 분, 쉬는 날 함께 나가서 이곳저곳 돌아다닐 수 있는 분이 좋아요!',
   photos: [],
   is_admin: false,
   created_at: new Date().toISOString()
@@ -71,7 +71,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     })
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_ , session) => {
       setUser(session?.user ?? null)
       if (session?.user) {
         await fetchProfile(session.user.id)
@@ -104,8 +104,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signIn = async (email: string, password: string) => {
     // Development mode bypass
     if (DEV_MODE) {
-      setUser(MOCK_ADMIN_USER)
-      setProfile(MOCK_ADMIN_PROFILE)
+      setUser(MOCK_USER)
+      setProfile(MOCK_PROFILE)
       return
     }
 
