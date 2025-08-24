@@ -1,0 +1,28 @@
+/* src/fonts.css */
+@font-face {
+  font-family: 'EliceDigitalBaeum';
+  src: url('/fonts/EliceDigitalBaeum_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+@font-face {
+  font-family: 'EliceDigitalBaeum';
+  src: url('/fonts/EliceDigitalBaeum_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+/* 기본: 본문은 Regular */
+html, body {
+  font-family: 'EliceDigitalBaeum', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 제목은 Bold */
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
